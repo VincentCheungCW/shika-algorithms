@@ -10,8 +10,5 @@
         <module name="shika-algorithms" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="shika-algorithms" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

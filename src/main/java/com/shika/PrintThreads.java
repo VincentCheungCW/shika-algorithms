@@ -23,7 +23,7 @@ public class PrintThreads {
             for (int i = 0; i < 100; i++) {
                 lock.lock();
                 try {
-                    while (cnt % 3 != 0) {
+                    if (cnt % 3 != 0) {
                         condition1.await();
                     }
                     System.out.println(Thread.currentThread().getName() + ": A");
@@ -44,7 +44,7 @@ public class PrintThreads {
             for (int i = 0; i < 100; i++) {
                 try {
                     lock.lock();
-                    while (cnt % 3 != 1) {
+                    if (cnt % 3 != 1) {
                         condition2.await();
                     }
                     System.out.println(Thread.currentThread().getName() + ": B");
@@ -65,7 +65,7 @@ public class PrintThreads {
             for (int i = 0; i < 100; i++) {
                 try {
                     lock.lock();
-                    while (cnt % 3 != 2) {
+                    if (cnt % 3 != 2) {
                         condition3.await();
                     }
                     System.out.println(Thread.currentThread().getName() + ": C");
