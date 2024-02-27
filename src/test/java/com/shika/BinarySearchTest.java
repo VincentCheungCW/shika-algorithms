@@ -1,7 +1,7 @@
 package com.shika;
 
-import static com.shika.BinarySearch.bSearch;
-import static com.shika.BinarySearch.bSearchRecursion;
+import static com.shika.数组.BinarySearch.bSearch;
+import static com.shika.数组.BinarySearch.bSearchRecursion;
 
 public class BinarySearchTest {
     public static void main(String[] args) {
