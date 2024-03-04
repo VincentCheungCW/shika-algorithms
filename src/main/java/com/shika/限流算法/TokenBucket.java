@@ -31,12 +31,14 @@ public class TokenBucket {
     }
 
     /**
-     * allowRequest() 方法表示一个请求是否允许通过，该方法使用 synchronized 关键字进行同步，以保证线程安全。
+     * acquire() 方法表示一个请求是否允许通过，
+     * 该方法使用 synchronized 关键字进行同步，以保证线程安全。
+     * (也可以考虑变量定义为ThreadLocal)
      *
      * @return
      */
-    public synchronized boolean allowRequest() {
-        refill();
+    public synchronized boolean acquire() {
+        checkToken();
         if (tokens > 0) {
             tokens--;
             return true;
@@ -46,11 +48,11 @@ public class TokenBucket {
     }
 
     /**
-     * refill() 方法用于生成令牌，其中计算令牌数量的逻辑是按照令牌生成速率每秒钟生成一定数量的令牌，
+     * checkToken() 方法用于检查令牌，生成令牌
      * tokens 变量表示当前令牌数量，
      * lastRefillTimestamp 变量表示上次令牌生成的时间戳。
      */
-    private void refill() {
+    private void checkToken() {
         long now = System.currentTimeMillis();
         if (now > lastRefillTimestamp) {
             int generatedTokens = (int) ((now - lastRefillTimestamp) / 1000 * rate);
