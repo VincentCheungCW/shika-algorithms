@@ -1,4 +1,4 @@
-package com.shika;
+package com.shika.leetcode;
 
 import java.util.HashMap;
 import java.util.Map;
